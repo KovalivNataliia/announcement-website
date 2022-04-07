@@ -3,8 +3,10 @@
     <span class="mat-h1">My Announcement Website</span>
   </div>
   <div>
-    <button class="add-btn" mat-raised-button color="accent">
-      New Announcement
-    </button>
+    <app-dialog (emitConfirm)="addAnnouncement($event)" [name]="'Add new announcement'">
+      <button class="add-btn" mat-raised-button color="accent">
+        New Announcement
+      </button>
+    </app-dialog>
   </div>
 </mat-toolbar>

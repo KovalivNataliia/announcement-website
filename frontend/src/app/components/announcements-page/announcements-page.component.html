@@ -1,0 +1,8 @@
+<div class="container">
+  <app-announcement
+  class="announcement" 
+  *ngFor="let announcement of announcementService.getAnnouncements$() | async"
+  [announcement]="announcement"
+  >
+  </app-announcement>
+</div>

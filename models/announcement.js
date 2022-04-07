@@ -17,6 +17,8 @@ const announcementSchema = new Schema({
 
 const Announcement = module.exports = model('Announcement', announcementSchema);
 
+module.exports.getAnnouncements = () => Announcement.find();
+
 module.exports.getAnnouncementById = id => Announcement.findById(id);
 
 module.exports.saveAnnouncement = announcement => announcement.save();

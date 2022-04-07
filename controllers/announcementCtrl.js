@@ -1,7 +1,13 @@
 const Announcement = require('../models/announcement');
 
 const getAnnouncements = async (req, res) => {
-
+  try {
+    const announcements = await Announcement.getAnnouncements();
+    res.status(200).json({ announcements });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+    console.log(err);
+  }
 };
 
 const addAnnouncement = async (req, res) => {

@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <h3>{{ data.name }}</h3>
+  <mat-form-field class="title-field">
+    <input matInput type="text" placeholder="Title" [(ngModel)]="data.title" maxlength="35">
+  </mat-form-field>
+  <mat-form-field class="description-field">
+    <textarea matInput type="text" placeholder="Description" [(ngModel)]="data.description"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="[data.title, data.description]" color="primary"
+    [disabled]="!data.title || !data.description">Confirm</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+</div>
