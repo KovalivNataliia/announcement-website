@@ -1,9 +1,15 @@
 <mat-card class="announcement">
   <mat-card-title class="title">{{ announcement.title }}</mat-card-title>
   <div class="btn-container">
-    <button mat-icon-button>
-      <mat-icon>create</mat-icon>
-    </button>
+    <app-dialog 
+    [name]="'Edit ' + announcement.title + ' announcement'" 
+    [title]="announcement.title" 
+    [description]="announcement.description"
+    (emitConfirm)="updateAnnouncement($event, announcement._id)">
+      <button mat-icon-button>
+        <mat-icon>create</mat-icon>
+      </button>
+    </app-dialog>
     <button mat-icon-button (click)="deleteAnnouncement(announcement._id)">
       <mat-icon>delete</mat-icon>
     </button>

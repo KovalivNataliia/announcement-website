@@ -32,4 +32,8 @@ export class AnnouncementService {
   deleteAnnouncement(id: string) {
     return this.http.delete(this.url + id, { headers: this.headers }).pipe(map((response: any) => response));
   }
+
+  updateAnnouncement(announcement: Announcement, id: string) {
+    return this.http.put(this.url + id, announcement, { headers: this.headers }).pipe(map((response: any) => response));
+  }
 }

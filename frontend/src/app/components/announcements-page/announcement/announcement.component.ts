@@ -13,6 +13,27 @@ export class AnnouncementComponent {
 
   constructor(private announcementService: AnnouncementService) { }
 
+  updateAnnouncement(announcementData: any, id: string) {
+    if (announcementData) {
+      const [title, description] = announcementData;
+      const announcement: Announcement = {
+        title,
+        description
+      }
+      this.announcementService.updateAnnouncement(announcement, id).subscribe(data => {
+        if (data.message === 'Success') {
+          this.announcementService.announcements.map(announcement => {
+            if (announcement._id === id) {
+              announcement.title = title;
+              announcement.description = description;
+            }
+          });
+          this.announcementService.announcements$.next(this.announcementService.announcements);
+        }
+      })
+    }
+  }
+
   deleteAnnouncement(id: string) {
     this.announcementService.deleteAnnouncement(id).subscribe(data => {
       if (data.message === 'Success') {
