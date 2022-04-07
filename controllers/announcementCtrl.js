@@ -34,7 +34,14 @@ const updateAnnouncement = async (req, res) => {
 };
 
 const deleteAnnouncement = async (req, res) => {
-
+  const id = req.params.id;
+  try {
+    await Announcement.deleteAnnouncement(id);
+    res.status(200).json({ message: 'Success' });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+    console.log(err);
+  }
 };
 
 module.exports = {

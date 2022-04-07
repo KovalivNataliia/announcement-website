@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const config = require('./config/db');
-const announcementRoutes = require('./routes/announcements');
+const announcementsRoutes = require('./routes/announcements');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/announcements', announcementRoutes);
+app.use('/api/announcements', announcementsRoutes);
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,

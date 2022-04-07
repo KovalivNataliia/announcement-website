@@ -8,7 +8,7 @@ import { Announcement } from '@shared/models/announcement.model';
 })
 export class AnnouncementService {
 
-  url: string = 'http://localhost:8080/api/announcements';
+  url: string = 'http://localhost:8080/api/announcements/';
   announcements!: Announcement[];
   announcements$: any;
   headers = new HttpHeaders();
@@ -27,5 +27,9 @@ export class AnnouncementService {
 
   addAnnouncement(announcement: Announcement) {
     return this.http.post(this.url, announcement, { headers: this.headers }).pipe(map((response: any) => response));
+  }
+
+  deleteAnnouncement(id: string) {
+    return this.http.delete(this.url + id, { headers: this.headers }).pipe(map((response: any) => response));
   }
 }

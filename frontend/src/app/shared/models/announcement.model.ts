@@ -1,5 +1,5 @@
 export interface Announcement {
-  _id?: string,
+  _id?: string | any,
   title: string,
   description: string,
   createdDate?: Date

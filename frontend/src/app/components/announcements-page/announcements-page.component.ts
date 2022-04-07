@@ -9,9 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AnnouncementsPageComponent implements OnInit {
 
-  constructor(public announcementService: AnnouncementService) { 
-    console.log(announcementService.getAnnouncements$())
-  }
+  constructor(public announcementService: AnnouncementService) { }
 
   ngOnInit(): void {
     this.announcementService.getAnnouncements().subscribe(data => {
