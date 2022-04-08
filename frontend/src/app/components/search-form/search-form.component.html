@@ -1,0 +1,9 @@
+<form class="search-form">
+  <mat-form-field appearance="fill" class="search-field">
+    <mat-label>Search by title</mat-label>
+    <input matInput name="text" [(ngModel)]="text">
+  </mat-form-field>
+  <button class="search-btn" mat-stroked-button color="warn" (click)="searchByTitle(text)">
+    Search
+  </button>
+</form>
