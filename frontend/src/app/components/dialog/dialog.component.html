@@ -1,3 +1,3 @@
-<span (click)="openDialog()">
+<span (click)="openDialog(); $event.stopPropagation()">
   <ng-content></ng-content>
 </span>

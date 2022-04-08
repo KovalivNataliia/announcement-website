@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { Announcement } from '@shared/models/announcement.model';
 import { AnnouncementService } from '@services/announcement.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DoCheck {
 
-  constructor(private announcementService: AnnouncementService) { }
+  announcementUrl!: boolean;
 
-  ngOnInit(): void {
+  constructor(private announcementService: AnnouncementService, private router: Router) {}
+
+  ngDoCheck(): void {
+    this.announcementUrl = this.router.url === '/announcements';
   }
 
   addAnnouncement(announcementData: any) {

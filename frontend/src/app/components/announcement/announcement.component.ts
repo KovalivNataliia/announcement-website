@@ -1,17 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, DoCheck } from '@angular/core';
 import { Announcement } from '@shared/models/announcement.model';
 import { AnnouncementService } from '@services/announcement.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
   styleUrls: ['./announcement.component.scss']
 })
-export class AnnouncementComponent {
+export class AnnouncementComponent implements DoCheck {
 
   @Input() announcement!: Announcement;
+  announcementUrl!: boolean;
 
-  constructor(private announcementService: AnnouncementService) { }
+  constructor(private announcementService: AnnouncementService, private router: Router) { }
+
+  ngDoCheck(): void {
+    this.announcementUrl = this.router.url === '/announcements';
+  }
 
   updateAnnouncement(announcementData: any, id: string) {
     if (announcementData) {

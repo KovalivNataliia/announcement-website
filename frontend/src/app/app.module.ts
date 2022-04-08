@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderModule } from '@modules/header.module';
 import { DialogModule } from '@modules/dialog.module';
-import { AnnouncementsPageModule } from '@modules/announcements-page.module';
+import { AnnouncementsModule } from '@modules/announcements.module';
 
 import { AnnouncementService } from '@services/announcement.service';
 
@@ -21,7 +21,7 @@ import { AnnouncementService } from '@services/announcement.service';
     HttpClientModule,
     HeaderModule,
     DialogModule,
-    AnnouncementsPageModule
+    AnnouncementsModule,
   ],
   providers: [
     AnnouncementService,
