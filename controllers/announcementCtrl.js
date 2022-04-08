@@ -1,8 +1,14 @@
 const Announcement = require('../models/announcement');
 
 const getAnnouncements = async (req, res) => {
+  const text = req.query.text;
   try {
-    const announcements = await Announcement.getAnnouncements();
+    let announcements;
+    if (text === 'undefined') {
+      announcements = await Announcement.getAnnouncements();
+    } else {
+      announcements = await Announcement.getAnnouncementsByTitle(text);
+    }
     res.status(200).json({ announcements });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });

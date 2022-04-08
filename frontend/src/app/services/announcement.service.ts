@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Announcement } from '@shared/models/announcement.model';
 
@@ -25,8 +25,9 @@ export class AnnouncementService {
     return this.http.get(this.url + id).pipe(map((response: any) => response));
   }
 
-  getAnnouncements() {
-    return this.http.get(this.url).pipe(map((response: any) => response));
+  getAnnouncements(text?: string) {
+    const params = new HttpParams().set('text', text!);
+    return this.http.get(this.url, { params }).pipe(map((response: any) => response));
   }
 
   addAnnouncement(announcement: Announcement) {
@@ -67,7 +68,7 @@ export class AnnouncementService {
   }
 
   getIntersection(selectedUnique: any, itemUnique: any) {
-   return [...itemUnique].filter(word => selectedUnique.has(word));
+    return [...itemUnique].filter(word => selectedUnique.has(word));
   }
 
   deleteSelectedAnnouncement(announcement: Announcement) {

@@ -26,5 +26,9 @@ module.exports.saveAnnouncement = announcement => announcement.save();
 module.exports.deleteAnnouncement = id => Announcement.findByIdAndRemove(id);
 
 module.exports.updateAnnouncement = (_id, announcement) => {
-  return Announcement.findByIdAndUpdate({_id}, announcement);
+  return Announcement.findByIdAndUpdate({ _id }, announcement);
 };
+
+module.exports.getAnnouncementsByTitle = text => {
+  return Announcement.find({ title: { "$regex": text, "$options": "i" } });
+} 
