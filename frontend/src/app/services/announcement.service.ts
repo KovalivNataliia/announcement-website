@@ -8,7 +8,7 @@ import { Announcement } from '@shared/models/announcement.model';
 })
 export class AnnouncementService {
 
-  url: string = 'http://localhost:8080/api/announcements/';
+  url: string = '/api/announcements/';
   announcements!: Announcement[];
   announcements$: any;
   headers = new HttpHeaders();

@@ -21,6 +21,10 @@ app.use(express.json());
 
 app.use('/api/announcements', announcementsRoutes);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
+
 mongoose.connect(config.db, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
