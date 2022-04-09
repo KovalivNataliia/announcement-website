@@ -24,7 +24,7 @@ export class AnnouncementDetailsPageComponent implements OnInit {
         this.announcementService.getAnnouncement(params.get('id')!))
     ).subscribe(data => {
       this.announcement = data.announcement;
-      this.similarAnnouncements = this.announcementService.getSimilar(data.announcement);
+      this.similarAnnouncements = data.similar;
       this.date = new Date(data.announcement.createdDate);
     });
   }

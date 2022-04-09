@@ -21,6 +21,10 @@ module.exports.getAnnouncements = () => Announcement.find();
 
 module.exports.getAnnouncementById = id => Announcement.findById(id);
 
+module.exports.getAnnouncementsExceptSelected = id => {
+  return Announcement.find({ _id: { $nin: id } })
+}
+
 module.exports.saveAnnouncement = announcement => announcement.save();
 
 module.exports.deleteAnnouncement = id => Announcement.findByIdAndRemove(id);
