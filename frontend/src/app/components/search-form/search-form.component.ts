@@ -8,11 +8,12 @@ import { AnnouncementService } from '@services/announcement.service';
 })
 export class SearchFormComponent {
 
-  text!: string;
+  text: string = '';
 
   constructor(private announcementService: AnnouncementService) { }
 
   searchByTitle(text: string) {
+    this.text = '';
     this.announcementService.getAnnouncements(text).subscribe(data => {
       this.announcementService.announcements$.next(data.announcements);
     });

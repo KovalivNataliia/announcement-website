@@ -11,7 +11,7 @@ const announcementSchema = new Schema({
   },
   createdDate: {
     type: Date,
-    default: new Date().toString(),
+    default: Date.now,
   },
 }, { versionKey: false });
 

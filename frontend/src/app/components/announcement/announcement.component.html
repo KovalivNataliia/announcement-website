@@ -2,7 +2,7 @@
   <mat-card-title class="title">{{ announcement.title }}</mat-card-title>
   <div class="btn-container" *ngIf="announcementUrl">
     <app-dialog 
-    [name]="'Edit ' + announcement.title + ' announcement'" 
+    [name]="'Edit «' + announcement.title + '» announcement'" 
     [title]="announcement.title" 
     [description]="announcement.description"
     (emitConfirm)="updateAnnouncement($event, announcement._id);">
