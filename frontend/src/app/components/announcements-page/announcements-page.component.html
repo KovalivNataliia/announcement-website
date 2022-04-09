@@ -1,11 +1,10 @@
 <div class="container">
-  <app-search-form></app-search-form>
-  <div class="announcements-container">
-    <app-announcement
-    class="announcement" 
-    *ngFor="let announcement of announcementService.getAnnouncements$() | async"
-    [announcement]="announcement"
-    >
-    </app-announcement>
-  </div>
+  <app-search-form>
+    <div class="announcements-container">
+      <app-announcement class="announcement"
+        *ngFor="let announcement of announcementService.getAnnouncements$() | async" 
+        [announcement]="announcement">
+      </app-announcement>
+    </div>
+  </app-search-form>
 </div>

@@ -7,3 +7,10 @@
     Search
   </button>
 </form>
+<ng-content></ng-content>
+<div *ngIf="searchMode" class="results">
+  <h2 *ngIf="noResults">No results found</h2>
+  <button mat-raised-button color="primary" (click)="refreshComponent()">
+    Go back
+  </button>
+</div>

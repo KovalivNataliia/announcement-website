@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   gap: 0 30px
 }
 
@@ -10,16 +10,13 @@
   width: 100%;
 }
 
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-
-::ng-deep .mat-form-field-wrapper {
-  padding-bottom: 0;
-}
-
 .search-btn {
-  padding: 8px;
   width: 150px;
+  height: 52.5px;
+  margin-bottom: 16px;
   font-size: 16px;
+}
+
+.results {
+  text-align: center;
 }
