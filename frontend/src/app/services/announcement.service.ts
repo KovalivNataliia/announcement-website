@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Announcement } from '@shared/models/announcement.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AnnouncementService {
   announcements$: any;
   headers = new HttpHeaders();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.headers.append('Content-Type', 'application/json');
   }
 
@@ -40,5 +41,11 @@ export class AnnouncementService {
 
   updateAnnouncement(announcement: Announcement, id: string) {
     return this.http.put(this.url + id, announcement, { headers: this.headers }).pipe(map((response: any) => response));
+  }
+  
+  refreshComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate([currentUrl]);
   }
 }

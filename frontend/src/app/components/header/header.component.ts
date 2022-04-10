@@ -28,8 +28,8 @@ export class HeaderComponent implements DoCheck {
       this.announcementService.addAnnouncement(announcement).subscribe(data => {
         this.announcementService.announcements.push(data.announcement);
         this.announcementService.announcements$.next(this.announcementService.announcements);
+        this.announcementService.refreshComponent();
       })
     }
   }
-
 }

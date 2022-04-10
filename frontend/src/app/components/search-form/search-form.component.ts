@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AnnouncementService } from '@services/announcement.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class SearchFormComponent {
   noResults: boolean = false;
   searchMode: boolean = false;
 
-  constructor(private announcementService: AnnouncementService, private router: Router) { }
+  constructor(public announcementService: AnnouncementService) { }
 
   searchByTitle(text: string) {
     this.searchMode = true;
@@ -23,11 +22,5 @@ export class SearchFormComponent {
       if (!data.announcements.length) this.noResults = true;
       this.announcementService.announcements$.next(data.announcements);
     });
-  }
-
-  refreshComponent() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.navigate([currentUrl]);
   }
 }

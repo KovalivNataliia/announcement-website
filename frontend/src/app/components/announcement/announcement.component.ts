@@ -35,6 +35,7 @@ export class AnnouncementComponent implements DoCheck {
             }
           });
           this.announcementService.announcements$.next(this.announcementService.announcements);
+          this.announcementService.refreshComponent();
         }
       })
     }
@@ -49,6 +50,7 @@ export class AnnouncementComponent implements DoCheck {
           }
         });
         this.announcementService.announcements$.next(this.announcementService.announcements);
+        this.announcementService.refreshComponent();
       }
     })
   }
